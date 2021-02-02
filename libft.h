@@ -6,7 +6,7 @@
 /*   By: sbrenton <sbrenton@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 11:49:12 by sbrenton          #+#    #+#             */
-/*   Updated: 2020/11/02 11:49:12 by sbrenton         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:47:24 by lesia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #	include <stdlib.h>
 #	include <unistd.h>
+#	include <stdio.h>
+#	include <zconf.h>
 
 char		**ft_split(char const *s, char c);
 char		*ft_strcpy(char *dest, char *src);
@@ -56,6 +58,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+int			get_next_line(int fd, char **line);
 
 struct		s_list
 {
@@ -73,5 +76,11 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+#	ifndef BUFFER_SIZE
+
+# 	define BUFFER_SIZE 32
+
+#	endif
 
 #	endif
